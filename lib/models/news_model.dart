@@ -8,7 +8,7 @@ part 'news_model.g.dart';
 class NewsModel {
   final String status;
   final int totalResults;
-  final ArticleModel articles;
+  final List<ArticleModel> articles;
 
   NewsModel(this.status, this.totalResults, this.articles);
 
