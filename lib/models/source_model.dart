@@ -9,4 +9,7 @@ class SourceModel {
   final String name;
 
   SourceModel(this.id, this.name);
+
+  factory SourceModel.fromJson(Map<String, dynamic> json) =>
+      _$SourceModelFromJson(json);
 }

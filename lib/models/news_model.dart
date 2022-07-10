@@ -11,4 +11,7 @@ class NewsModel {
   final ArticleModel articles;
 
   NewsModel(this.status, this.totalResults, this.articles);
+
+  factory NewsModel.fromJson(Map<String, dynamic> json) =>
+      _$NewsModelFromJson(json);
 }

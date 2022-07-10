@@ -17,4 +17,7 @@ class ArticleModel {
 
   ArticleModel(this.source, this.author, this.title, this.description, this.url,
       this.urlToImage, this.publishedAt, this.content);
+
+  factory ArticleModel.fromJson(Map<String, dynamic> json) =>
+      _$ArticleModelFromJson(json);
 }
