@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:news_app/models/api_service.dart';
 import 'package:news_app/models/news_model.dart';
+import 'package:news_app/pages/news_webview.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _getData() async {
-    var _moreNews = (await ApiService().getNews())!;
+    var _moreNews = (await ApiService().getNews());
 
     setState(() {
       _newsModel = _moreNews;
@@ -79,13 +80,46 @@ class _HomePageState extends State<HomePage> {
                   } else if (snapshot.hasData) {
                     final data = snapshot.data as NewsModel;
                     return ListView.builder(
-                        itemCount: 5,
+                        itemCount: 7,
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
-                            padding: const EdgeInsets.only(bottom: 150.0),
-                            child: Text(data?.articles[index].title ?? "-"),
+                            padding: const EdgeInsets.only(bottom: 30.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: [
+                                      Text(data.articles[index].title ?? "-"),
+                                      InkWell(
+                                        onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => NewsWebview(
+                                              title:
+                                                  data.articles[index].title ??
+                                                      "Title",
+                                              url: data.articles[index].url ??
+                                                  "google.com",
+                                            ),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          data.articles[index].url ?? "-",
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                if (data.articles[index].urlToImage != null)
+                                  Image.network(
+                                    data.articles[index].urlToImage!,
+                                    width: 100,
+                                    height: 100,
+                                  )
+                              ],
+                            ),
                           );
                         });
                   }
