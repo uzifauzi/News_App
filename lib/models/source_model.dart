@@ -5,7 +5,7 @@ part 'source_model.g.dart';
 @JsonSerializable()
 class SourceModel {
   final String? id;
-  final String name;
+  final String? name;
 
   SourceModel(this.id, this.name);
 

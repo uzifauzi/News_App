@@ -8,7 +8,7 @@ part of 'source_model.dart';
 
 SourceModel _$SourceModelFromJson(Map<String, dynamic> json) => SourceModel(
       json['id'] as String?,
-      json['name'] as String,
+      json['name'] as String?,
     );
 
 Map<String, dynamic> _$SourceModelToJson(SourceModel instance) =>
