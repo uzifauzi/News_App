@@ -59,8 +59,10 @@ class _HomePageState extends State<HomePage> {
                         )
                       ],
                     ),
-                    const CircleAvatar(
-                      backgroundColor: Colors.green,
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        'assets/avatar.png',
+                      ),
                     )
                   ],
                 ),
